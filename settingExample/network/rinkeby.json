@@ -1,0 +1,5 @@
+{
+	"ethereumUri" : "wss://rinkeby.infura.io/ws/v3/${INFURA_PROJECT_ID}",
+	"ethereumHttpUri" : "https://rinkeby.infura.io/v3/${INFURA_PROJECT_ID}",
+	"chainID" : "4"
+}

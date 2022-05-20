@@ -1,0 +1,5 @@
+{
+	"ethereumUri" : "ws://localhost:8545",
+	"ethereumHttpUri" : "http://localhost:8545",
+	"chainID" : "1337"
+}
