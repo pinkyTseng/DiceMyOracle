@@ -5,6 +5,8 @@ var OracleResolver = artifacts.require("OracleResolver");
 
 var Dice = artifacts.require("Dice");
 
+var fs = require('fs')
+
 module.exports = async function(deployer) {
     // deploy a contract
     await deployer.deploy(Oracle);
@@ -28,8 +30,24 @@ module.exports = async function(deployer) {
     console.log("oracleAddrStr: "+Oracle.address)
     console.log("diceAddrStr: "+Dice.address)
 
+    
+    var contractObj = {}
+    contractObj.oracleAddr = Oracle.address
+    contractObj.diceAddr = Dice.address
+    contractObj.oracleResolverAddr = OracleResolver.address
+    //console.log(MySettingDir)
 
-
+    let mySettingDir = process.env.MyGethOracleSetting
+    fs.writeFileSync(mySettingDir+'ContractAddresses.json', JSON.stringify(contractObj))
+    // fs.writeFile(mySettingDir+'ContractAddresses.json', JSON.stringify(contractObj),function (error) {
+    //     if (error) {
+    //         console.log("file write error: " + error)
+    //     }else{
+    //         console.log("file write success")
+    //     }
+    // })
+    console.log("2_dice finished")
+    
     //await dice.setOracleAddress(OracleResolver.address);
     //deployer.deploy(A, arg1, arg2, ...);
 }

@@ -18,14 +18,17 @@
  *
  */
 
- const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+// require('dotenv').config()
 //
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const fs = require('fs');
+let mySettingDir = process.env.MyGethOracleSetting
+const pkeys = fs.readFileSync(mySettingDir+"privateKey.json").toString().trim()
+let pkeysObj = JSON.parse(pkeys)
+let pk = pkeysObj.DeployerPrivateKey
 
-const privateKeys = [
-  "85dec634b5fd256afaab46c39f2be809a6bcda4dcbc1ae961584d24c87377a5a"
-];
+// let pk = process.env.DeployerPrivateKey
+let privateKeys = [pk];
 
 module.exports = {
   /**
